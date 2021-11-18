@@ -9,6 +9,7 @@ const IndexController = require('./controllers/IndexController');
 
 /** Rota da pagina inicial vinda do HomeControlers */
 route.get('/', IndexController.index);
+route.get('/auth', IndexController.auth);
 
 /** exportando o route */
 module.exports = route;
