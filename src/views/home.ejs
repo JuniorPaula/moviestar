@@ -7,7 +7,75 @@
         <%- include('includes/messages') %>
       </div>
     </div>
-    <h1>Home usuário</h1>
+
+    <div class="col-md-12">
+      <form action="/home/edit/<%= user._id %>" method="post" class="form">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div class="row">
+          <div class="col-md-4">
+            <h1><%= user.name + user.lastname %></h1>
+            <p class="page-description">Altere seus dados no formulaŕio abaixo</p>
+
+            <div class="form-group">
+              <label for="name">Nome:</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome" value="<%= user.name %>">
+            </div>
+
+            <div class="form-group">
+              <label for="lastname">Sobrenome:</label>
+              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Digite seu sobrenome" value="<%= user.lastname %>">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" readonly class="form-control disabled" id="email" name="email" placeholder="Digite seu Email" value="<%= user.email %>">
+            </div>
+
+            <input type="submit" class="btn card-btn" value="Alterar">
+          </div>
+
+          <div class="col-md-4">
+            <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
+            <div class="form-group">
+              <label for="image">Foto:</label>
+              <input type="file" class="form-control-file" name="image">
+            </div>
+
+            <div class="form-group">
+              <label for="bio">Sobre você:</label>
+              <textarea name="bio" id="bio" class="form-control" rows="5" placeholder="Conte um pouco mais sobre você..."></textarea>
+            </div>
+          </div>
+
+        </div><!-- ./ end row -->
+
+      </form>
+
+      <!-- fild change password -->
+      <div class="row" id="change-password-container">
+        <div class="col-md-4">
+          <h2>Alterar senha</h2>
+          <p class="page-description">Digite a nova senha e confirme para alterar a  sua senha:</p>
+
+          <form action="/home/edit/<%= user._id %>" method="post" class="form">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <div class="form-group">
+              <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Confirme a senha</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha">
+            </div>
+
+            <input type="submit" class="btn card-btn" value="Alterar senha">
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 
 <%- include('includes/footer') %>
