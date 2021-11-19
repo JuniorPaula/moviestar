@@ -21,3 +21,22 @@ exports.register = async (req, res) => {
     console.log(e);
   }
 };
+
+exports.login = async (req, res) => {
+  try {
+    const login = new User(req.body);
+    await login.login();
+
+    if (login.errors.length > 0) {
+      req.flash('errors', login.errors);
+      req.session.save(() => res.redirect('/auth'));
+      return;
+    }
+
+    req.flash('success', 'Bem vindo!');
+    req.session.user = login.user;
+    req.session.save(() => res.redirect('/home'));
+  } catch (e) {
+    console.log(e);
+  }
+};

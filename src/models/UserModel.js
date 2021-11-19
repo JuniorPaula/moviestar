@@ -30,6 +30,22 @@ class User {
     this.user = null;
   }
 
+  /** método responsável por logar o usuário */
+  async login() {
+    if (this.errors.length > 0) return;
+    this.user = await UserModel.findOne({ email: this.body.email });
+
+    if (!this.user) {
+      this.errors.push('Usuário inválido!');
+      return;
+    }
+
+    if (!bcrypt.compareSync(this.body.password, this.user.password)) {
+      this.errors.push('Senha inválida');
+      this.user = null;
+    }
+  }
+
   /** método responsável por resgistrar o usuário */
   async register() {
     this.valid();
