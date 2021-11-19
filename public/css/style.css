@@ -4,6 +4,32 @@
   --secondary-color: #000;
 }
 
+/** errors messsages */
+.alert {
+  max-width: 40vw;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+.alert-danger {
+  border: 1px solid rgb(167, 50, 50);
+  background-color: rgb(192, 74, 74);
+  padding: 1rem 2rem;
+}
+
+.alert-success {
+  border: 1px solid rgb(37, 107, 74);
+  background-color: rgb(28, 129, 90);
+  padding: 1rem 2rem;
+}
+
+.error-text {
+  color: rgb(211, 68, 68);
+  font-size: 12px;
+}
 
 /* Navbar */
 .navbar-brand {

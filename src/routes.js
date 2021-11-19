@@ -6,10 +6,14 @@ const route = express.Router();
 
 /** Importando o HomeControllers */
 const IndexController = require('./controllers/IndexController');
+const UserController = require('./controllers/UserController');
 
 /** Rota da pagina inicial vinda do HomeControlers */
 route.get('/', IndexController.index);
-route.get('/auth', IndexController.auth);
+
+/** Rotas de autenticação */
+route.get('/auth', UserController.index);
+route.post('/auth/resgister', UserController.register);
 
 /** exportando o route */
 module.exports = route;
