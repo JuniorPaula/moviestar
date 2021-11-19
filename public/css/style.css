@@ -158,6 +158,13 @@
   margin-top: 30px;
 }
 
+#image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Footer */
 #footer {
   background-color: var(--secondary-color);

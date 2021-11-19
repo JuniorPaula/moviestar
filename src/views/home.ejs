@@ -8,14 +8,27 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1><%= user.name + user.lastname %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="image-container">
+        <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
+        <div class="form-group">
+          <label for="image">Foto:</label>
+          <input type="file" class="form-control-file" name="image">
+        </div>
+      </div>
+    </div>
+
     <div class="col-md-12">
       <form action="/home/edit/<%= user._id %>" method="post" class="form">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-
         <div class="row">
           <div class="col-md-4">
-            <h1><%= user.name + user.lastname %></h1>
-            <p class="page-description">Altere seus dados no formulaŕio abaixo</p>
+            <h5 class="page-description">Altere seus dados no formulário abaixo</h5>
 
             <div class="form-group">
               <label for="name">Nome:</label>
@@ -36,17 +49,13 @@
           </div>
 
           <div class="col-md-4">
-            <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
-            <div class="form-group">
-              <label for="image">Foto:</label>
-              <input type="file" class="form-control-file" name="image">
-            </div>
-
+            <!-- BIO -->
             <div class="form-group">
               <label for="bio">Sobre você:</label>
-              <textarea name="bio" id="bio" class="form-control" rows="5" placeholder="Conte um pouco mais sobre você..."></textarea>
+              <textarea name="bio" id="bio" class="form-control" rows="5" placeholder="Conte um pouco mais sobre você..."><%= user.bio %></textarea>
             </div>
           </div>
+
 
         </div><!-- ./ end row -->
 

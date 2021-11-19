@@ -4,6 +4,10 @@ const express = require('express');
 /** 2- Faser o express usar o router */
 const route = express.Router();
 
+/** importar o multer */
+// const multer = require('multer');
+// const userMulter = require('./config/userMulter');
+
 /** Importando os Controllers */
 const IndexController = require('./controllers/IndexController');
 const UserController = require('./controllers/UserController');
@@ -23,6 +27,7 @@ route.post('/auth/login', UserController.login);
 
 /** Rotas home de usuários */
 route.get('/home', loginRequired, HomeController.index);
+route.post('/home/edit/:id', loginRequired, HomeController.update);
 
 /** exportando o route */
 module.exports = route;

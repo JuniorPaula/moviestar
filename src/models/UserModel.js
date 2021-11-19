@@ -11,7 +11,6 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
-  image: { type: String, required: false },
   bio: { type: String, required: false },
 });
 
@@ -28,6 +27,25 @@ class User {
     this.body = body;
     this.errors = [];
     this.user = null;
+  }
+
+  /** método estático responsável por buscar todos
+     *  os usuários e listar na view */
+  static async getUsers(id) {
+    const user = await UserModel.findById(id);
+    return user;
+  }
+
+  /** método responsável por atualizar um usuário */
+  async update(id) {
+    if (typeof id !== 'string') return;
+    this.clearUp();
+
+    if (this.body.name === '') this.errors.push('O nome não pode está vazio.');
+    if (this.body.lastname === '') this.errors.push('O Sobrenome não pode está vazio.');
+
+    if (this.errors.length > 0) return;
+    this.user = await UserModel.findByIdAndUpdate(id, this.body, { new: true });
   }
 
   /** método responsável por logar o usuário */
