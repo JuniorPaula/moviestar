@@ -40,3 +40,8 @@ exports.login = async (req, res) => {
     console.log(e);
   }
 };
+
+exports.logout = (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+};
