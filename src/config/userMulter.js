@@ -1,37 +1,22 @@
 const multer = require('multer');
 const path = require('path');
-const crypto = require('crypto');
+
+const rand = () => Math.floor(Math.random() * 10000 + 10000);
 
 module.exports = {
-  dest: path.resolve(__dirname, '..', '..', 'public', 'img', 'user'),
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpeg') {
+      return cb(new multer.MulterError('Arquivo precisar ser PNG ou JPG'));
+    }
+
+    return cb(null, true);
+  },
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, path.resolve(__dirname, '..', '..', 'public', 'img', 'user'));
     },
     filename: (req, file, cb) => {
-      crypto.randomBytes(8, (err, hash) => {
-        if (err) cb(err);
-
-        const fileName = `${hash.toString('hex')}-${file.originalname}`;
-
-        cb(null, fileName);
-      });
+      cb(null, `${Date.now()}_${rand()}${path.extname(file.originalname)}`);
     },
   }),
-  limits: {
-    fileSize: 2 * 1024 * 1024,
-  },
-  fileFilter: (req, file, cb) => {
-    const allowedMimes = [
-      'image/jpg',
-      'image/jpeg',
-      'image/png',
-    ];
-
-    if (allowedMimes.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(new Error('Formato de imagem inválido.'));
-    }
-  },
 };
