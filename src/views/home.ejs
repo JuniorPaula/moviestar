@@ -13,22 +13,36 @@
         <h1><%= user.name + user.lastname %></h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12" id="image-container">
-        <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
-        <div class="form-group">
-          <label for="image">Foto:</label>
-          <input type="file" class="form-control-file" name="image">
-        </div>
-      </div>
-    </div>
+    <!-- form to upload image -->
+    <form action="/foto/user?_csrf=<%= csrfToken %>" method="post" id="image-container" class="form" enctype="multipart/form-data">
+      <div class="row">
+          <div class="col-md-12" >
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" name="user_id" value="<%= user._id %>">
+            <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
 
-    <div class="col-md-12">
+            <div class="form-group">
+              <label for="image">Foto:</label>
+              <input type="file" class="form-control-file" name="image">
+            </div>
+
+            <div class="form-group text-center">
+              <input type="submit" class="btn card-btn" value="click para alterar imagem">
+            </div>
+          </div>
+      </div>
+    </form>
+    <!-- ./ end form to upload image -->
+
+    <!-- form edit user -->
+    <div class="col-md-12 my-3">
       <form action="/home/edit/<%= user._id %>" method="post" class="form">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <div class="row">
+          <div class="col-md-4"></div>
           <div class="col-md-4">
-            <h5 class="page-description">Altere seus dados no formulário abaixo</h5>
+            <h2>Alterar informações</h2>
+            <p class="page-description">Altere seus dados no formulário abaixo</p>
 
             <div class="form-group">
               <label for="name">Nome:</label>
@@ -45,24 +59,23 @@
               <input type="email" readonly class="form-control disabled" id="email" name="email" placeholder="Digite seu Email" value="<%= user.email %>">
             </div>
 
-            <input type="submit" class="btn card-btn" value="Alterar">
-          </div>
-
-          <div class="col-md-4">
             <!-- BIO -->
             <div class="form-group">
               <label for="bio">Sobre você:</label>
               <textarea name="bio" id="bio" class="form-control" rows="5" placeholder="Conte um pouco mais sobre você..."><%= user.bio %></textarea>
             </div>
-          </div>
 
+            <input type="submit" class="btn card-btn" value="Alterar">
+          </div>
 
         </div><!-- ./ end row -->
 
       </form>
+      <!-- ./ end form edit user -->
 
       <!-- fild change password -->
       <div class="row" id="change-password-container">
+        <div class="col-md-4"></div>
         <div class="col-md-4">
           <h2>Alterar senha</h2>
           <p class="page-description">Digite a nova senha e confirme para alterar a  sua senha:</p>
