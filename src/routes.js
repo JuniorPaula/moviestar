@@ -32,6 +32,7 @@ route.post('/auth/login', UserController.login);
 /** Rotas home de usuários */
 route.get('/home', loginRequired, HomeController.index);
 route.post('/home/edit/:id', loginRequired, HomeController.update);
+route.post('/home/passwdedit/:id', loginRequired, HomeController.passwordUpdate);
 
 /** Rotas de imagens */
 route.post('/foto/user', loginRequired, upload.single('image'), FotoController.create);

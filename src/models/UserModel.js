@@ -36,6 +36,28 @@ class User {
     return user;
   }
 
+  /** método responsável por atualizar a senha do usuário */
+  async passwordUpdate(id) {
+    if (typeof id !== 'string') return;
+
+    if (this.body.password.length < 3 || this.body.password.length > 50) {
+      this.errors.push('senha precisar ter mas que 3 caracteres.');
+    }
+
+    if (this.body.password !== this.body.confirmPassword) {
+      this.errors.push('Senhas precisam ser iguais.');
+      return;
+    }
+
+    /** criar um hash da senha com bcrytjs */
+    const salt = bcrypt.genSaltSync();
+    this.body.password = bcrypt.hashSync(this.body.password, salt);
+    this.body.confirmPassword = bcrypt.hashSync(this.body.confirmPassword, salt);
+
+    if (this.errors.length > 0) return;
+    this.user = await UserModel.findByIdAndUpdate(id, this.body, { new: true });
+  }
+
   /** método responsável por atualizar um usuário */
   async update(id) {
     if (typeof id !== 'string') return;

@@ -87,7 +87,7 @@
           <h2>Alterar senha</h2>
           <p class="page-description">Digite a nova senha e confirme para alterar a  sua senha:</p>
 
-          <form action="/home/edit/<%= user._id %>" method="post" class="form">
+          <form action="/home/passwdedit/<%= user._id %>" method="post" class="form">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
             <div class="form-group">

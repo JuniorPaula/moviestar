@@ -27,3 +27,24 @@ exports.update = async (req, res) => {
     return res.render('404');
   }
 };
+
+exports.passwordUpdate = async (req, res) => {
+  try {
+    if (!req.params.id) return res.render('404');
+    const userpass = new User(req.body);
+
+    await userpass.passwordUpdate(req.params.id);
+
+    if (userpass.errors.length > 0) {
+      req.flash('errors', userpass.errors);
+      req.session.save(() => res.redirect('/home'));
+      return;
+    }
+
+    req.flash('success', 'Senha alterada com sucesso!');
+    return req.session.save(() => res.redirect('/home'));
+  } catch (e) {
+    console.log(e);
+    return res.render('404');
+  }
+};
