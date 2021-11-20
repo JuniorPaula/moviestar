@@ -16,6 +16,7 @@ const IndexController = require('./controllers/IndexController');
 const UserController = require('./controllers/UserController');
 const HomeController = require('./controllers/HomeController');
 const FotoController = require('./controllers/FotoController');
+const MovieController = require('./controllers/MovieController');
 
 /** Impotar os middleware */
 const { loginRequired } = require('./middlewares/middleware');
@@ -36,6 +37,9 @@ route.post('/home/passwdedit/:id', loginRequired, HomeController.passwordUpdate)
 
 /** Rotas de imagens */
 route.post('/foto/user', loginRequired, upload.single('image'), FotoController.create);
+
+/** Rotas de filmes */
+route.get('/newmovie', loginRequired, MovieController.index);
 
 /** exportando o route */
 module.exports = route;
