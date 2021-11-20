@@ -8,8 +8,10 @@ const route = express.Router();
 /** importar o multer */
 const multer = require('multer');
 const userMulter = require('./config/userMulter');
+const movieMulter = require('./config/movieMulter');
 
 const upload = multer(userMulter);
+const movieUpload = multer(movieMulter);
 
 /** Importando os Controllers */
 const IndexController = require('./controllers/IndexController');
@@ -40,6 +42,7 @@ route.post('/foto/user', loginRequired, upload.single('image'), FotoController.c
 
 /** Rotas de filmes */
 route.get('/newmovie', loginRequired, MovieController.index);
+route.post('/newmovie', loginRequired, movieUpload.single('image'), MovieController.create);
 
 /** exportando o route */
 module.exports = route;
