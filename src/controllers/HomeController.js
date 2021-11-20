@@ -1,8 +1,11 @@
+const FotoUser = require('../models/FotoUser');
 const User = require('../models/UserModel');
 
 exports.index = async (req, res) => {
   const user = await User.getUsers(req.session.user._id);
-  res.render('home', { user });
+  const image = await FotoUser.getFotoByUserId(req.session.user._id);
+
+  res.render('home', { user, image });
 };
 
 exports.update = async (req, res) => {

@@ -18,8 +18,15 @@
       <div class="row">
           <div class="col-md-12" >
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <!-- <input type="hidden" name="user_id" value="<%= user._id %>"> -->
-            <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
+            <% if(image) { %>
+
+              <div id="profile-image-container" style="background-image: url('img/user/<%= image.key %>');"></div>
+
+            <% } else { %>
+
+              <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
+
+            <% } %>
 
             <div class="form-group">
               <label for="image">Foto:</label>
