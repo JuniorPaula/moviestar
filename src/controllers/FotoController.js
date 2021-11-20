@@ -2,6 +2,10 @@ const FotoUser = require('../models/FotoUser');
 
 exports.create = async (req, res) => {
   try {
+    if (!req.file) {
+      req.flash('errors', 'Selecione uma imagem para fazer o upload.');
+      req.session.save(() => res.redirect('/home'));
+    }
     const userFoto = new FotoUser(req.file);
     const userID = req.session.user._id;
 

@@ -34,10 +34,6 @@ class FotoUser {
   async upload(userID) {
     const { originalname: name, size, filename: key } = this.file;
 
-    if (!key) this.errors.push('Selecione uma imagem para poder alterar!');
-
-    if (this.errors.length > 0) return;
-
     await FotoUserModel.create({
       name,
       size,
