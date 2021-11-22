@@ -99,14 +99,6 @@ app.set('views', path.resolve(__dirname, 'views'));
 /** Fazendo o express setar a views engine do EJS */
 app.set('view engine', 'ejs');
 
-/**
- * PARAMENTROS
- * req.body -> recebe o corpo da reqisisao vindo do formulario;
- * req.params -> recebe chave/valor vindo dos paramentros da url;
- * res.send -> deveolve o valor na tela para o usuario;
- * res.render -> renderiza o que foi pedido;
- */
-
 /** porta de conexão */
 const port = process.env.PORT;
 
