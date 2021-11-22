@@ -45,7 +45,10 @@ const routes = require('./routes');
 const { middlewareGlobal, checkCsrfToken, csrfMiddleware } = require('./middlewares/middleware');
 
 /** fazendo o express ultilizar o helmet */
-app.use(helmet());
+app.use(helmet({
+  /** desbloquerar politica de segurança */
+  contentSecurityPolicy: false,
+}));
 
 /** 4- atribuindo urlencoded para envio de formulario -> body da requisição;
  * se não for passado o body vem como 'undefined'.
