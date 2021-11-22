@@ -23,27 +23,30 @@
           <th scope="col">#</th>
           <th scope="col">Título</th>
           <th scope="col">Nota</th>
-          <th scope="col" class="actions-colunm">Ações</th>
+          <th scope="col" class="actions-column">Ações</th>
         </thead>
 
         <tbody>
+          <% movies.forEach(movie => { %>
           <tr>
-            <td scolpe="row">1</td>
+            <td scolpe="row">#</td>
             <td>
-              <a href="#" class="table-movie--title">Título</a>
+              <a href="/dashboard/movie/<%= movie._id %>" class="table-movie--title"><%= movie.title %></a>
             </td>
             <td><i class="fas fa-star"></i> 9</td>
             <td class="actions-column">
-              <a href="#" class="edit-btn">
+              <a href="/dashboard/edit/<%= movie._id %>" class="edit-btn">
                 <i class="far fa-edit"></i> Editar
               </a>
-              <form action="">
+              <form action="/dashboard/delete/<%= movie._id %>" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <button type="submit" class="delete-btn">
                   <i class="fas fa-times"></i> Deletar
                 </button>
               </form>
             </td>
           </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>

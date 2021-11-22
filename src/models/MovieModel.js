@@ -25,6 +25,12 @@ class MovieModel {
     this.errors = [];
   }
 
+  /** método responsável por recuperar um filme pelo id do usuário */
+  static async getMovieByUserId(id) {
+    const movies = await Movie.find({ userId: id });
+    return movies;
+  }
+
   /** método responsável por recuperar filmes por categoria */
   static async getMovieByCatagory(category) {
     const movies = await Movie.find({ category });
