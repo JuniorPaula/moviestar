@@ -25,6 +25,18 @@ class MovieModel {
     this.errors = [];
   }
 
+  /** método responsável por recuperar filmes por categoria */
+  static async getMovieByCatagory(category) {
+    const movies = await Movie.find({ category });
+    return movies;
+  }
+
+  /** método responsável por recuperar todos os filmes da base de dados */
+  static async getMovies() {
+    const movies = await Movie.find().sort({ created_at: -1 });
+    return movies;
+  }
+
   /** método responsável por adicionar um filme */
   async register(id) {
     this.valid();

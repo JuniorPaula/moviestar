@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
     }
 
     req.flash('success', 'Filme cadastrado com sucesso!');
-    return req.session.save(() => res.redirect('/newmovie'));
+    return req.session.save(() => res.redirect('/'));
   } catch (e) {
     console.log(e);
   }

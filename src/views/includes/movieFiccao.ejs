@@ -1,0 +1,27 @@
+<% if(movieFiccao.length > 0) { %>
+  <% movieFiccao.forEach(movie => { %>
+  <div class="card movie-card">
+
+    <% if(!movie.image) { %>
+    <div class="card-img--top" style="background-image: url(img/movie/movie_cover.jpg);"></div>
+
+    <% } else { %>
+    <div class="card-img--top" style="background-image: url('img/movie/<%= movie.image %>');"></div>
+
+    <% } %>
+    <div class="card-body">
+      <p class="card-rating">
+        <i class="fas fa-star"></i>
+        <span class="rating">9</span>
+      </p>
+      <h5 class="card-title">
+        <a href="/movie/<%= movie._id %>"><%= movie.title %></a>
+      </h5>
+      <a href="/movie/<%= movie._id %>" class="btn btn-primary rate-btn">Avaliar</a>
+      <a href="/movie/<%= movie._id %>" class="btn btn-primary card-btn">Conhecer</a>
+    </div>
+  </div>
+  <% }) %>
+<% } else { %>
+  <p class="empty-list">Ainda há filmes cadastrados!</p>
+<% } %>
