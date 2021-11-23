@@ -15,10 +15,10 @@
         <span class="rating">9</span>
       </p>
       <h5 class="card-title">
-        <a href="/movie/<%= movie._id %>"><%= movie.title %></a>
+        <a href="/movie?id=<%= movie._id %>"><%= movie.title %></a>
       </h5>
-      <a href="/movie/<%= movie._id %>" class="btn btn-primary rate-btn">Avaliar</a>
-      <a href="/movie/<%= movie._id %>" class="btn btn-primary card-btn">Conhecer</a>
+      <a href="/movie?id=<%= movie._id %>" class="btn btn-primary rate-btn">Avaliar</a>
+      <a href="/movie?id=<%= movie._id %>" class="btn btn-primary card-btn">Conhecer</a>
     </div>
   </div>
   <% }) %>
