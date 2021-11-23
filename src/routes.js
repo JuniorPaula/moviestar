@@ -47,7 +47,8 @@ route.post('/newmovie', loginRequired, movieUpload.single('image'), MovieControl
 
 /** Rotas da dashboard */
 route.get('/dashboard', loginRequired, DashboardController.index);
-route.get('/movie', loginRequired, DashboardController.findMovie);
+route.post('/delete/:id', loginRequired, DashboardController.delete);
+route.get('/movie', DashboardController.findMovie);
 
 /** exportando o route */
 module.exports = route;

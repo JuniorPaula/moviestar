@@ -27,9 +27,10 @@
         <div class="movie-image--container" style="background-image: url('img/movie/<%= movie.image%>');"></div>
       </div>
       <div class="offset-md-1 col-md-10" id="reviews-container">
-        <h3 id="reviews-titile">Avaliações:</h3>
+        <h3 id="reviews-title">Avaliações:</h3>
         <!-- verify user to post comment on own review -->
-        <div class="col-md-12" id="review-form--container">
+        <% if(userLoggeded && ownMovie) { %>
+        <div class="col-md-12" id="reviews-form--container">
           <h4>Envie sua avaliação:</h4>
           <p class="page-description">Preencha o formulário com a nota e comentário sobre o filme</p>
 
@@ -57,12 +58,13 @@
             <input type="submit" class="btn card-btn" value="Enviar comentário">
           </form>
         </div>
+        <% } %>
 
         <!-- comments -->
         <div class="col-md-12 review">
           <div class="row">
             <div class="col-md-1">
-              <div class="profile-image--container review-image" style="background-image: url('img/user/user.png');"></div>
+              <div class="profile-image-container review-image" style="background-image: url('img/user/user.png');"></div>
             </div>
             <div class="col-md-9 author-details--container">
               <h4 class="author-name">

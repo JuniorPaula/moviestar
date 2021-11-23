@@ -25,6 +25,11 @@ class MovieModel {
     this.errors = [];
   }
 
+  /** método responsável por deletar o filme */
+  static async deleteMovie(id) {
+    await Movie.findByIdAndDelete({ _id: id });
+  }
+
   /** método responsável por recuperar um filme */
   static async getMovieById(id) {
     const movie = await Movie.findById({ _id: id });

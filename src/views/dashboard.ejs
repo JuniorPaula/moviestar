@@ -38,7 +38,7 @@
               <a href="/dashboard/edit/<%= movie._id %>" class="edit-btn">
                 <i class="far fa-edit"></i> Editar
               </a>
-              <form action="/dashboard/delete/<%= movie._id %>" method="post">
+              <form action="/delete/<%= movie._id %>" method="post">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <button type="submit" class="delete-btn">
                   <i class="fas fa-times"></i> Deletar

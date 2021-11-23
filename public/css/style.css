@@ -202,7 +202,8 @@
 }
 
 /* Edit profile */
-#profile-image-container {
+#profile-image-container,
+.profile-image-container {
   width: 150px;
   height: 150px;
   border: 6px solid var(--primary-color);
@@ -210,6 +211,11 @@
   background-size: cover;
   background-position: center;
   margin: 15px auto;
+}
+
+.profile-image-container {
+  width: 70px;
+  height: 70px;
 }
 
 .page-description {
@@ -228,7 +234,8 @@
   margin-top: 30px;
 }
 
-#add-movie--container .card-btn {
+#add-movie--container .card-btn,
+#review-form-id .card-btn {
   width: auto;
 }
 
@@ -265,9 +272,60 @@
   padding-top: 7px;
 }
 
+/* Movie */
+.movie-container {
+  text-align: center;
+}
+
+.movie-details {
+  margin: 25px auto;
+}
+
 /* Dashboard */
 #add-movie--container {
   text-align: right;
+}
+
+.pipe {
+  border: 1px solid #333;
+  margin: 0 10px;
+}
+
+#reviews-title {
+  margin-bottom: 25px;
+}
+
+#reviews-form--container {
+  background-color: #333;
+  padding: 20px;
+}
+
+#reviews-form--container select,
+#reviews-form--container textarea {
+  width: 50%;
+}
+
+#reviews-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 5px solid var(--primary-color);
+}
+
+.review {
+  padding: 20px 0;
+  border-bottom: 1px solid #333;
+}
+
+.author-details--container {
+  padding-top: 20px;
+}
+
+.author-name a {
+  color: var(--primary-color);
+}
+
+.comment-title {
+  color: #999;
 }
 
 #movies-dashboard .table {
