@@ -35,7 +35,7 @@
             </td>
             <td><i class="fas fa-star"></i> 9</td>
             <td class="actions-column">
-              <a href="/dashboard/edit/<%= movie._id %>" class="edit-btn">
+              <a href="/edit?id=<%= movie._id %>" class="edit-btn">
                 <i class="far fa-edit"></i> Editar
               </a>
               <form action="/delete/<%= movie._id %>" method="post">

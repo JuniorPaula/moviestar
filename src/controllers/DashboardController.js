@@ -32,6 +32,20 @@ exports.findMovie = async (req, res) => {
   }
 };
 
+/** método responsável por renderizar a view de edição de filme */
+exports.showMovie = async (req, res) => {
+  try {
+    const movieId = req.query.id;
+    const movie = await MovieModel.getMovieById(movieId);
+
+    /** renderozar a view */
+    return res.render('editMovie', { movie });
+  } catch (e) {
+    console.log(e);
+    return res.render('404');
+  }
+};
+
 exports.delete = async (req, res) => {
   try {
     const movieId = req.params.id;
