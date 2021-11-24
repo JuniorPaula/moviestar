@@ -54,6 +54,21 @@ class MovieModel {
     return movies;
   }
 
+  /** método responsável por atualizar um filme */
+  async update(id) {
+    this.valid();
+    if (this.errors.length > 0) return;
+
+    await Movie.findByIdAndUpdate(id, {
+      title: this.body.title,
+      image: this.file,
+      length: this.body.length,
+      category: this.body.category,
+      trailer: this.body.trailer,
+      description: this.body.description,
+    }, { new: true });
+  }
+
   /** método responsável por adicionar um filme */
   async register(id) {
     this.valid();
