@@ -68,3 +68,32 @@ exports.delete = async (req, res) => {
     console.log(e);
   }
 };
+
+exports.update = async (req, res) => {
+  try {
+    const { movieId } = req.body;
+    let image = null;
+
+    const imageDatabase = await MovieModel.getMovieById(movieId);
+
+    if (req.file === undefined) {
+      image = imageDatabase.image;
+    } else {
+      image = req.file.filename;
+    }
+
+    const movieUpdated = new MovieModel(req.body, image);
+    await movieUpdated.update(movieId);
+
+    if (movieUpdated.errors.length > 0) {
+      req.flash('errors', movieUpdated.errors);
+      req.session.save(() => res.redirect(`/edit?id=${movieId}`));
+      return;
+    }
+
+    req.flash('success', 'Filme atualizado com sucesso!');
+    return req.session.save(() => res.redirect(`/edit?id=${movieId}`));
+  } catch (e) {
+    console.log(e);
+  }
+};
