@@ -29,6 +29,12 @@ class User {
     this.user = null;
   }
 
+  /** métodos responsavel por recuperar todos os usuários */
+  static async getAllUsers() {
+    const users = await UserModel.find();
+    return users;
+  }
+
   /** método estático responsável por buscar todos
      *  os usuários e listar na view */
   static async getUsers(id) {

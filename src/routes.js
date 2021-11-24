@@ -20,6 +20,7 @@ const HomeController = require('./controllers/HomeController');
 const FotoController = require('./controllers/FotoController');
 const MovieController = require('./controllers/MovieController');
 const DashboardController = require('./controllers/DashboardController');
+const ProfileController = require('./controllers/ProfileController');
 
 /** Impotar os middleware */
 const { loginRequired } = require('./middlewares/middleware');
@@ -51,6 +52,9 @@ route.post('/delete/:id', loginRequired, DashboardController.delete);
 route.post('/dashboard/edit', loginRequired, movieUpload.single('image'), DashboardController.update);
 route.get('/movie', DashboardController.findMovie);
 route.get('/edit', loginRequired, DashboardController.showMovie);
+
+/** rotas de perfil */
+route.get('/profile', ProfileController.index);
 
 /** exportando o route */
 module.exports = route;

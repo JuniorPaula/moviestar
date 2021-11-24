@@ -18,14 +18,10 @@ exports.findMovie = async (req, res) => {
     const movieId = req.query.id;
     const movie = await MovieModel.getMovieById(movieId);
 
-    /** verificar se o filme é do usuário */
-    let ownMovie = false;
-    if (userLoggeded._id === movie.userId) {
-      ownMovie = true;
-    }
-
     /** renderizar a view */
-    res.render('movie', { movie, userLoggeded, ownMovie });
+    res.render('movie', {
+      movie, userLoggeded,
+    });
   } catch (e) {
     console.log(e);
     return res.render('404');

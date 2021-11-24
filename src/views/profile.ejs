@@ -1,0 +1,74 @@
+<%- include('includes/header') %>
+<%- include('includes/nav') %>
+
+<section id="main-container" class="container-fluid">
+  <div class="col-md-12">
+    <div class="mensages">
+      <%- include('includes/messages') %>
+    </div>
+  </div>
+
+  <div class="col-md-8 offset-md-2">
+    <div class="row profile-container">
+      <div class="col-md-12 about-container">
+        <h1 class="page-title"><%= user.name + user.lastname %></h1>
+
+        <% if(image) { %>
+
+          <div id="profile-image-container" style="background-image: url('img/user/<%= image.key %>');"></div>
+
+        <% } else { %>
+
+          <div id="profile-image-container" style="background-image: url(img/user/user.png);"></div>
+
+        <% } %>
+
+        <h3 class="about-title">Sobre:</h3>
+
+        <% if(user.bio) { %>
+        <p class="page-description"><%= user.bio %></p>
+        <% } else { %>
+        <p class="page-description">Usuário ainda não escreveu nada aqui...</p>
+        <% }  %>
+
+      </div>
+      <div class="col-md-12 add-movies--container">
+        <h3>Filmes que enviou:</h3>
+
+        <div class="movies-container">
+        <% if(movies.length > 0) { %>
+          <% movies.forEach(movie => { %>
+           <div class="card movie-card">
+
+             <% if(!movie.image) { %>
+             <div class="card-img--top" style="background-image: url(img/movie/movie_cover.jpg);"></div>
+
+             <% } else { %>
+             <div class="card-img--top" style="background-image: url('img/movie/<%= movie.image %>');"></div>
+
+             <% } %>
+             <div class="card-body">
+               <p class="card-rating">
+                 <i class="fas fa-star"></i>
+                 <span class="rating">9</span>
+               </p>
+               <h5 class="card-title">
+                 <a href="/movie?id=<%= movie._id %>"><%= movie.title %></a>
+               </h5>
+               <a href="/movie?id=<%= movie._id %>" class="btn btn-primary rate-btn">Avaliar</a>
+               <a href="/movie?id=<%= movie._id %>" class="btn btn-primary card-btn">Conhecer</a>
+             </div>
+           </div>
+           <% }) %>
+
+         <% } else { %>
+           <p class="empty-list">Ainda há filmes cadastrados!</p>
+         <% } %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('includes/footer') %>

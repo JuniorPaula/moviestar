@@ -29,7 +29,7 @@
       <div class="offset-md-1 col-md-10" id="reviews-container">
         <h3 id="reviews-title">Avaliações:</h3>
         <!-- verify user to post comment on own review -->
-        <% if(userLoggeded && ownMovie) { %>
+        <% if(userLoggeded) { %>
         <div class="col-md-12" id="reviews-form--container">
           <h4>Envie sua avaliação:</h4>
           <p class="page-description">Preencha o formulário com a nota e comentário sobre o filme</p>
@@ -68,7 +68,7 @@
             </div>
             <div class="col-md-9 author-details--container">
               <h4 class="author-name">
-                <a href="#">Junior teste</a>
+                <a href="/profile">Junior teste</a>
               </h4>
               <p><i class="fas fa-star"></i> 9</p>
             </div>
