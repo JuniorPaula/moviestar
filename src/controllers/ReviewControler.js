@@ -4,11 +4,12 @@ exports.create = async (req, res) => {
   try {
     const movieId = req.params.id;
     const userId = req.session.user._id;
+    const nameUser = req.session.user.name;
     const { rating, review } = req.body;
 
     if (!movieId || !userId) return;
 
-    const createReview = new ReviewModel(rating, review, userId, movieId);
+    const createReview = new ReviewModel(rating, review, userId, nameUser, movieId);
     await createReview.create();
 
     if (createReview.errors.length > 0) {

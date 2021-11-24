@@ -9,6 +9,7 @@ const ReviewSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  nameUser: { type: String },
   movieId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'MovieModel',
@@ -20,10 +21,11 @@ const ReviewSchema = new mongoose.Schema({
 const Review = mongoose.model('ReviewModel', ReviewSchema);
 
 class ReviewModel {
-  constructor(rating, review, userId, movieId) {
+  constructor(rating, review, userId, nameUser, movieId) {
     this.rating = rating;
     this.review = review;
     this.userId = userId;
+    this.nameUser = nameUser;
     this.movieId = movieId;
     this.errors = [];
   }
@@ -45,6 +47,7 @@ class ReviewModel {
       rating: this.rating,
       review: this.review,
       userId: this.userId,
+      nameUser: this.nameUser,
       movieId: this.movieId,
     });
   }
