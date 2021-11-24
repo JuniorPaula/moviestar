@@ -15,8 +15,9 @@
         <p class="page-description">Altere os dados do filme no formulário abaixo:</p>
 
         <!-- form to edit movie -->
-        <form action="/dashboard/edit/<%= movie._id %>/?_csfr<%= csrfToken %>" method="post" enctype="multipart/form-data">
+        <form action="/dashboard/edit?_csrf=<%= csrfToken %>" method="post" enctype="multipart/form-data">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="hidden" name="movieId" value="<%= movie._id %>">
 
           <div class="form-group">
             <label for="title">Título:</label>
