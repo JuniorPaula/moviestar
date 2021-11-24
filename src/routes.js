@@ -48,6 +48,7 @@ route.post('/newmovie', loginRequired, movieUpload.single('image'), MovieControl
 /** Rotas da dashboard */
 route.get('/dashboard', loginRequired, DashboardController.index);
 route.post('/delete/:id', loginRequired, DashboardController.delete);
+route.post('/dashboard/edit', loginRequired, movieUpload.single('image'), DashboardController.update);
 route.get('/movie', DashboardController.findMovie);
 route.get('/edit', loginRequired, DashboardController.showMovie);
 
