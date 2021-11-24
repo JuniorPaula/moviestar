@@ -1,4 +1,5 @@
 const MovieModel = require('../models/MovieModel');
+const ReviewModel = require('../models/ReviewModel');
 
 exports.index = async (req, res) => {
   try {
@@ -18,9 +19,12 @@ exports.findMovie = async (req, res) => {
     const movieId = req.query.id;
     const movie = await MovieModel.getMovieById(movieId);
 
+    /** recuperar as reviews */
+    const reviews = await ReviewModel.getReviewMovieById(movieId);
+
     /** renderizar a view */
     res.render('movie', {
-      movie, userLoggeded,
+      movie, userLoggeded, reviews,
     });
   } catch (e) {
     console.log(e);

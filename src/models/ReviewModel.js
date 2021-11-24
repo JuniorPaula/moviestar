@@ -28,6 +28,15 @@ class ReviewModel {
     this.errors = [];
   }
 
+  /** método responsável por resgatar todos as reviews */
+  static async getReviewMovieById(id) {
+    if (!id) return;
+
+    const reviews = await Review.find({ movieId: id });
+
+    return reviews;
+  }
+
   /** método responsável por criar um comentário */
   async create() {
     this.valid();
