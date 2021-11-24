@@ -21,6 +21,7 @@ const FotoController = require('./controllers/FotoController');
 const MovieController = require('./controllers/MovieController');
 const DashboardController = require('./controllers/DashboardController');
 const ProfileController = require('./controllers/ProfileController');
+const ReviewControler = require('./controllers/ReviewControler');
 
 /** Impotar os middleware */
 const { loginRequired } = require('./middlewares/middleware');
@@ -55,6 +56,9 @@ route.get('/edit', loginRequired, DashboardController.showMovie);
 
 /** rotas de perfil */
 route.get('/profile', ProfileController.index);
+
+/** rotas de reviews */
+route.post('/reviews/:id', loginRequired, ReviewControler.create);
 
 /** exportando o route */
 module.exports = route;
