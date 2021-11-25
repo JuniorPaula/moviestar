@@ -68,11 +68,17 @@
             <div class="col-md-12 review">
               <div class="row">
                 <div class="col-md-1">
-                  <div class="profile-image-container review-image" style="background-image: url('img/user/user.png');"></div>
+                  <% if(!review.userImage) { %>
+                    <div class="profile-image-container review-image" style="background-image: url('img/user/user.png');"></div>
+
+                  <% } else { %>
+                    <div class="profile-image-container review-image" style="background-image: url('img/user/<%= review.userImage %>');"></div>
+
+                  <% } %>
                 </div>
                 <div class="col-md-9 author-details--container">
                   <h4 class="author-name">
-                    <a href="/profile"><%= review.nameUser %></a>
+                    <a href="/profile?id=<%= review.userId %>"><%= review.nameUser %></a>
                   </h4>
                   <p><i class="fas fa-star"></i> <%= review.rating %></p>
                 </div>

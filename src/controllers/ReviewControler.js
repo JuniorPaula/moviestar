@@ -1,4 +1,5 @@
 const ReviewModel = require('../models/ReviewModel');
+const FotoUser = require('../models/FotoUser');
 
 exports.create = async (req, res) => {
   try {
@@ -7,9 +8,20 @@ exports.create = async (req, res) => {
     const nameUser = req.session.user.name;
     const { rating, review } = req.body;
 
+    /** recuperar a imagem do usuário */
+    let userImage = null;
+    const image = await FotoUser.getFotoByUserId(req.session.user._id);
+
+    /** verificar se o usuário possui imagem */
+    if (image === null) {
+      userImage = '';
+    } else {
+      userImage = image.key;
+    }
+
     if (!movieId || !userId) return;
 
-    const createReview = new ReviewModel(rating, review, userId, nameUser, movieId);
+    const createReview = new ReviewModel(rating, review, userId, nameUser, movieId, userImage);
     await createReview.create();
 
     if (createReview.errors.length > 0) {

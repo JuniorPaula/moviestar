@@ -27,7 +27,7 @@ class FotoUser {
     if (!id) return;
     const fotoProfile = await FotoUserModel.findOne({ user: id })
       .sort({ created_at: -1 });
-    return fotoProfile;
+    return fotoProfile || null;
   }
 
   /** método responsável por slavar foto no banco */
