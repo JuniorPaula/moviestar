@@ -431,6 +431,15 @@
   text-decoration: none;
 }
 
+/* Search */
+#search-title {
+  font-size: 40px;
+}
+
+#search-result,
+.back-link {
+  color: var(--primary-color);
+}
 
 /* Footer */
 #footer {

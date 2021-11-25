@@ -3,7 +3,7 @@
 
   <section id="main-container" class="container-fluid">
 
-    <h2 class="section-title">Você está buscando por: <span id="search-result"><%= q %></span> </h2>
+    <h2 class="section-title" id="search-title">Você está buscando por: <span id="search-result"><%= q %></span> </h2>
     <p class="section-description">Resultado de busca com base na sua pesquisa.</p>
     <div class="movies-container">
 
@@ -26,7 +26,7 @@
          <% }) %>
 
        <% } else { %>
-         <p class="empty-list">Não há filmes para bsuca, <a href="/">Voltar</a></p>
+         <p class="empty-list">Não há filmes para bsuca, <a href="/" class="back-link">Voltar</a></p>
        <% } %>
 
     </div>
