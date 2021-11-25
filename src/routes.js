@@ -22,6 +22,7 @@ const MovieController = require('./controllers/MovieController');
 const DashboardController = require('./controllers/DashboardController');
 const ProfileController = require('./controllers/ProfileController');
 const ReviewControler = require('./controllers/ReviewControler');
+const SearchControler = require('./controllers/SearchControler');
 
 /** Impotar os middleware */
 const { loginRequired } = require('./middlewares/middleware');
@@ -59,6 +60,9 @@ route.get('/profile', loginRequired, ProfileController.index);
 
 /** rotas de reviews */
 route.post('/reviews/:id', loginRequired, ReviewControler.create);
+
+/** rota de busca */
+route.get('/search', SearchControler.index);
 
 /** exportando o route */
 module.exports = route;

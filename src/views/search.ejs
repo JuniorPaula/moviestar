@@ -1,0 +1,38 @@
+<%- include('includes/header') %>
+<%- include('includes/nav') %>
+
+  <section id="main-container" class="container-fluid">
+
+    <h2 class="section-title">Você está buscando por: <span id="search-result"><%= q %></span> </h2>
+    <p class="section-description">Resultado de busca com base na sua pesquisa.</p>
+    <div class="movies-container">
+
+
+      <% if(movies.length > 0) { %>
+        <% movies.forEach(movie => { %>
+         <div class="card movie-card">
+           <div class="card-img--top" style="background-image: url('img/movie/<%= movie.image %>');"></div>
+           <div class="card-body">
+             <p class="card-rating">
+               <span class="rating"></span>
+             </p>
+             <h5 class="card-title">
+               <a href="/movie?id=<%= movie._id %>"><%= movie.title %></a>
+             </h5>
+             <a href="/movie?id=<%= movie._id %>" class="btn btn-primary rate-btn">Avaliar</a>
+             <a href="/movie?id=<%= movie._id %>" class="btn btn-primary card-btn">Conhecer</a>
+           </div>
+         </div>
+         <% }) %>
+
+       <% } else { %>
+         <p class="empty-list">Não há filmes para bsuca, <a href="/">Voltar</a></p>
+       <% } %>
+
+    </div>
+
+
+  </section>
+
+<%- include('includes/footer') %>
+

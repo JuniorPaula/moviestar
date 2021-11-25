@@ -25,6 +25,12 @@ class MovieModel {
     this.errors = [];
   }
 
+  /** método responsável por busca filmes pelo título */
+  static async getMovieByTitle(query) {
+    const movies = await Movie.find({ title: new RegExp(`.*${query}.*`, 'i') });
+    return movies;
+  }
+
   /** método responsável por deletar o filme */
   static async deleteMovie(id) {
     await Movie.findByIdAndDelete({ _id: id });
