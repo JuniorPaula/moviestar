@@ -15,5 +15,6 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'consistent-return': 'off',
     'no-underscore-dangle': 'off',
+    'no-plusplus': 'off',
   },
 };

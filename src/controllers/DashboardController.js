@@ -22,9 +22,21 @@ exports.findMovie = async (req, res) => {
     /** recuperar as reviews */
     const reviews = await ReviewModel.getReviewMovieById(movieId);
 
+    /** fazer a contagem das reviews */
+    const rating = reviews.map((el) => el.rating);
+    const parseRating = rating.map((i) => Number(i));
+
+    let total = 0;
+
+    for (let i = 0; i < parseRating.length; i++) {
+      total = Math.ceil((total += parseRating[i]));
+    }
+
+    total /= rating.length;
+
     /** renderizar a view */
     res.render('movie', {
-      movie, userLoggeded, reviews,
+      movie, userLoggeded, reviews, total,
     });
   } catch (e) {
     console.log(e);
