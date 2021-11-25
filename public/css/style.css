@@ -487,3 +487,102 @@
 #footer-links-container {
   margin: 30px 0;
 }
+
+/* Responseive */
+@media (max-width: 450px) {
+
+  #main-container {
+    padding: 20px;
+  }
+
+  /* HOME */
+  #search-form {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #search-form .form-control {
+    width: 85%;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .movie-container {
+    padding: 0 15px;
+  }
+
+  .movie-card {
+    width: 100%;
+  }
+
+  .movie-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movie-details span {
+    padding-bottom: 8px;
+  }
+
+  .pipe {
+    display: none;
+  }
+
+  .movie-container iframe {
+    max-width: 100% !important;
+  }
+
+  #reviews-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #reviews-form--container select,
+  #reviews-form--container textarea  {
+    width: 100%;
+  }
+
+  .empty-list {
+    margin-top: 20px;
+  }
+
+  .alert {
+    max-width: 100%;
+  }
+
+  /* MOVIE */
+  .review {
+    padding: 0 15px;
+  }
+
+  /* DASHBOARD */
+  #movies-dashboard {
+    padding: 0;
+  }
+
+  .actions-column {
+    max-width: 140px;
+  }
+
+  .edit-btn {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .delete-btn {
+    font-size: 12px;
+  }
+
+  /* EDIT MOVIE */
+  .movie-image--container {
+    margin-top: 1rem;
+  }
+
+  .fas.fa-bars {
+    color: var(--primary-color);
+  }
+}
