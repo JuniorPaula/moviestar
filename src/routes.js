@@ -55,7 +55,7 @@ route.get('/movie', DashboardController.findMovie);
 route.get('/edit', loginRequired, DashboardController.showMovie);
 
 /** rotas de perfil */
-route.get('/profile', ProfileController.index);
+route.get('/profile', loginRequired, ProfileController.index);
 
 /** rotas de reviews */
 route.post('/reviews/:id', loginRequired, ReviewControler.create);

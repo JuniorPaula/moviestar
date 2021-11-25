@@ -14,7 +14,7 @@ exports.index = async (req, res) => {
 
     /** buscar um usuário */
     const user = await User.getUsers(userId);
-    const image = await FotoUser.getFotoByUserId(req.session.user._id);
+    const image = await FotoUser.getFotoByUserId(userId);
 
     /** buscar fimes do usuário */
     const movies = await MovieModel.getMovieByUserId(userId);
