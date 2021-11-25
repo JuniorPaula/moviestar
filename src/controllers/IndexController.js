@@ -18,6 +18,7 @@ exports.index = async (req, res) => {
       movieDrama,
       movieFiccao,
       movieRomance,
+
     });
   } catch (e) {
     console.log(e);

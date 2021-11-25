@@ -1,3 +1,4 @@
+const { Math } = require('core-js');
 const MovieModel = require('../models/MovieModel');
 const ReviewModel = require('../models/ReviewModel');
 
@@ -32,7 +33,7 @@ exports.findMovie = async (req, res) => {
       total = Math.ceil((total += parseRating[i]));
     }
 
-    total /= rating.length;
+    total = Math.ceil(total /= rating.length);
 
     /** renderizar a view */
     res.render('movie', {
